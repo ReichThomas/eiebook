@@ -13,7 +13,7 @@
 ; in the GPIO peripheral for the LEDs and buttons so you can correctly configure
 ; and access them.
 
-; This is a new Test comment.
+; A Test comment.
 
 ; Includes
 #define  __ASSEMBLY__           1
