@@ -112,7 +112,7 @@
                 </option>
                 <option>
                     <name>RTConfigPath2</name>
-                    <state>$TOOLKIT_DIR$\inc\c\DLib_Config_Normal.h</state>
+                    <state>$TOOLKIT_DIR$\INC\c\DLib_Config_Normal.h</state>
                 </option>
                 <option>
                     <name>GBECoreSlave</name>
@@ -1001,7 +1001,7 @@
                 </option>
                 <option>
                     <name>IlinkTrustzoneImportLibraryOut</name>
-                    <state>eie_assembler_import_lib.o</state>
+                    <state>###Unitialized###</state>
                 </option>
                 <option>
                     <name>OILinkExtraOption</name>
@@ -2116,10 +2116,7 @@
         <name>$PROJ_DIR$\exceptions.h</name>
     </file>
     <file>
-        <name>$PROJ_DIR$\kill_x_cycles.s</name>
-    </file>
-    <file>
-        <name>$PROJ_DIR$\main_assembler_gpio.s</name>
+        <name>$PROJ_DIR$\main_assembler.s</name>
     </file>
     <file>
         <name>$PROJ_DIR$\sam3u2c_flash.icf</name>

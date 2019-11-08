@@ -2384,10 +2384,7 @@
         <name>$PROJ_DIR$\exceptions.h</name>
     </file>
     <file>
-        <name>$PROJ_DIR$\kill_x_cycles.s</name>
-    </file>
-    <file>
-        <name>$PROJ_DIR$\main_assembler_gpio.s</name>
+        <name>$PROJ_DIR$\main_assembler.s</name>
     </file>
     <file>
         <name>$PROJ_DIR$\sam3u2c_flash.icf</name>
