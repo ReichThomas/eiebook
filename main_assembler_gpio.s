@@ -13,8 +13,6 @@
 ; in the GPIO peripheral for the LEDs and buttons so you can correctly configure
 ; and access them.
 
-; A Test comment.
-
 ; Includes
 #define  __ASSEMBLY__           1
 #include "AT91SAM3U4.h"	        ; Include file for all special function registers
