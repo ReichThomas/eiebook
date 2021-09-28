@@ -6,7 +6,7 @@
 ; Description
 ; This is a demonstration program to show basic code structures in assembly
 
-; This is a test comment.
+; This is a new test comment, written on 29.09.2021.
 
 ; Includes
 #define  __ASSEMBLY__           1  ; Need this so the correct values in AT91SAM3U4.h are selected
