@@ -40,5 +40,14 @@ move_eg   MOV     r0, #10            ; r0 = d'10'
           ADD     r1, r1, r0, LSL #2  ; r1 = r1 + (4 * r0)
           MOV     r2, r0, LSR #6      ; r2 = r0 / 64
           SUBS    r3, r1, r0          ; r2 = r1 - r0, update APSR
+          IT      EQ                  ; Get ready for a conditional
+          MOVEQ   r3, #1024           ; if {Z}, r3 = 1024
+          RSBS    r3, r1, r0, LSL #4  ; r3 = (16 x r0) - r1
+          IT      NE                  ; Get ready for a conditional
+          MULNE   r3, r2, r0          ; r3 = r2 x r0
+          CMP     r3, r1              ; Set flags if r1 == r3
+          IT      EQ                  ; Get ready for a conditional
+          ORREQS  r3, r0, r1, LSR #10 ; r3 = r0 | (r1 / 1024)
+
 
 	END
