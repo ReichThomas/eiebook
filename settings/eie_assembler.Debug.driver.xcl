@@ -6,11 +6,11 @@
 
 "-p" 
 
-"D:\EWARM_8_40\arm\CONFIG\debugger\Microchip\ATSAM3U2E.ddf" 
+"D:\EWARM_8_40\arm\CONFIG\debugger\Microchip\ATSAM3U2C.ddf" 
 
 "--semihosting=none" 
 
-"--device=ATSAM3U2E" 
+"--device=ATSAM3U2C" 
 
 "--drv_communication=USB0" 
 

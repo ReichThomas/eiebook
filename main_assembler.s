@@ -49,5 +49,18 @@ move_eg   MOV     r0, #10            ; r0 = d'10'
           IT      EQ                  ; Get ready for a conditional
           ORREQS  r3, r0, r1, LSR #10 ; r3 = r0 | (r1 / 1024)
 
+          MOV     r1, #0x20000000     ; r1 = the target address
+          LDR     r0, =5000           ; r0 = 5000
+          STR     r0, [r1]            ; *r1 = r0
+          LSL     r0, r0, #2          ; Multiply r0 by 4
+          ADD     r1, r1, #4          ; r1 += 4 (new RAM address)
+          STR     r0, [r1]            ; *r1 = r0
+          LDR     r3, [r1]            ; *r1 = r0
+          B       main
+          
+
+
+
+
 
 	END
