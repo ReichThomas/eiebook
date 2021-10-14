@@ -17,6 +17,9 @@
     SECTION .text : CODE : NOROOT(2)
     THUMB
 
+; "EXTERN" declarations make labels from other files visible here
+    EXTERN kill_x_cycles
+
 ; "PUBLIC" declarations make labels from this file visible to others
 		PUBLIC  main
 
@@ -32,6 +35,10 @@
 #define PB_13_LED_WHT       0x00002000
 
 #define PB_02_BUTTON3       0x00000004
+
+;-----------------------------------------------------------------------------
+; Other constants
+KILL_CYCLES       EQU       1000000   ; 250ms x (4e6 cycles/sec) = 1e6 cycles
 
 ; Register address offsets
 #define PER_OER_OFFSET      (AT91C_PIOB_OER - AT91C_PIOB_PER)
@@ -127,7 +134,37 @@ init
   LDR     r0, =PIOB_CODR_INIT         ; Load r0 with the init constant
   STR     r0, [r2, #PER_CODR_OFFSET]  ; *(r2 + PER_CODR_OFFSET) = r0
 
+main_loop
 
+update_LED
+  LDR     r3, [r2, #PER_ODSR_OFFSET]  ; r3 = *(r2 + PER_ODSR_OFFSET)
+                                      ; read the current AT91C_PIOB_ODSR value
+  EOR     r3, r3, #PB_18_LED_BLU      ; r3 = r3 XOR the value to toggle LED
+  LDR     r0, =KILL_CYCLES            ; r0 = cycles to kill
+
+check_button
+  LDR     r4, [r2, #PER_PDSR_OFFSET]  ; r4 = *(r2 + PER_PDSR_OFFSET) read
+                                      ; the current AT91C_PIOB_PDSR value
+  ANDS    r4, r4, #PB_02_BUTTON3      ; Mask off all bits except BUTTON3
+  BNE     button_not_pressed          ; if (BUTTON3)
+
+button_pressed                        ; Add a breakpoint after this line
+  ORR     r3, r3, #PB_17_LED_YLW      ; r3 |= PB_17_LED_YLW Turn on the
+                                      ; yellow LED bit in r3
+  B       continue
+
+button_not_pressed
+  BIC     r3, r3, #PB_17_LED_YLW      ; Clear the yellow LED bit
+
+continue
+
+  STR     r3, [r2, #PER_ODSR_OFFSET]  ; Write the modified value back to ODSR
+
+  BL      kill_x_cycles               ; Call the function
+
+
+  B       main_loop                   ; Repeat infinitely
+  
 
 
 
