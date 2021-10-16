@@ -1,0 +1,138 @@
+\hypertarget{exceptions_8h_source}{}\doxysection{D\+:/\+Ei\+E/eiebook/exceptions.h}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{exceptions_8h_source_l00001}00001 \textcolor{comment}{/* -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{exceptions_8h_source_l00002}00002 \textcolor{comment}{ *         ATMEL Microcontroller Software Support }}
+\DoxyCodeLine{\Hypertarget{exceptions_8h_source_l00003}00003 \textcolor{comment}{ * -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{exceptions_8h_source_l00004}00004 \textcolor{comment}{ * Copyright (c) 2008, Atmel Corporation}}
+\DoxyCodeLine{\Hypertarget{exceptions_8h_source_l00005}00005 \textcolor{comment}{ *}}
+\DoxyCodeLine{\Hypertarget{exceptions_8h_source_l00006}00006 \textcolor{comment}{ * All rights reserved.}}
+\DoxyCodeLine{\Hypertarget{exceptions_8h_source_l00007}00007 \textcolor{comment}{ *}}
+\DoxyCodeLine{\Hypertarget{exceptions_8h_source_l00008}00008 \textcolor{comment}{ * Redistribution and use in source and binary forms, with or without}}
+\DoxyCodeLine{\Hypertarget{exceptions_8h_source_l00009}00009 \textcolor{comment}{ * modification, are permitted provided that the following conditions are met:}}
+\DoxyCodeLine{\Hypertarget{exceptions_8h_source_l00010}00010 \textcolor{comment}{ *}}
+\DoxyCodeLine{\Hypertarget{exceptions_8h_source_l00011}00011 \textcolor{comment}{ * -\/ Redistributions of source code must retain the above copyright notice,}}
+\DoxyCodeLine{\Hypertarget{exceptions_8h_source_l00012}00012 \textcolor{comment}{ * this list of conditions and the disclaimer below.}}
+\DoxyCodeLine{\Hypertarget{exceptions_8h_source_l00013}00013 \textcolor{comment}{ *}}
+\DoxyCodeLine{\Hypertarget{exceptions_8h_source_l00014}00014 \textcolor{comment}{ * Atmel's name may not be used to endorse or promote products derived from}}
+\DoxyCodeLine{\Hypertarget{exceptions_8h_source_l00015}00015 \textcolor{comment}{ * this software without specific prior written permission.}}
+\DoxyCodeLine{\Hypertarget{exceptions_8h_source_l00016}00016 \textcolor{comment}{ *}}
+\DoxyCodeLine{\Hypertarget{exceptions_8h_source_l00017}00017 \textcolor{comment}{ * DISCLAIMER: THIS SOFTWARE IS PROVIDED BY ATMEL "{}AS IS"{} AND ANY EXPRESS OR}}
+\DoxyCodeLine{\Hypertarget{exceptions_8h_source_l00018}00018 \textcolor{comment}{ * IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF}}
+\DoxyCodeLine{\Hypertarget{exceptions_8h_source_l00019}00019 \textcolor{comment}{ * MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NON-\/INFRINGEMENT ARE}}
+\DoxyCodeLine{\Hypertarget{exceptions_8h_source_l00020}00020 \textcolor{comment}{ * DISCLAIMED. IN NO EVENT SHALL ATMEL BE LIABLE FOR ANY DIRECT, INDIRECT,}}
+\DoxyCodeLine{\Hypertarget{exceptions_8h_source_l00021}00021 \textcolor{comment}{ * INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT}}
+\DoxyCodeLine{\Hypertarget{exceptions_8h_source_l00022}00022 \textcolor{comment}{ * LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA,}}
+\DoxyCodeLine{\Hypertarget{exceptions_8h_source_l00023}00023 \textcolor{comment}{ * OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF}}
+\DoxyCodeLine{\Hypertarget{exceptions_8h_source_l00024}00024 \textcolor{comment}{ * LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING}}
+\DoxyCodeLine{\Hypertarget{exceptions_8h_source_l00025}00025 \textcolor{comment}{ * NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,}}
+\DoxyCodeLine{\Hypertarget{exceptions_8h_source_l00026}00026 \textcolor{comment}{ * EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.}}
+\DoxyCodeLine{\Hypertarget{exceptions_8h_source_l00027}00027 \textcolor{comment}{ * -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{exceptions_8h_source_l00028}00028 \textcolor{comment}{ */}}
+\DoxyCodeLine{\Hypertarget{exceptions_8h_source_l00029}00029 }
+\DoxyCodeLine{\Hypertarget{exceptions_8h_source_l00030}00030 \textcolor{comment}{/*}}
+\DoxyCodeLine{\Hypertarget{exceptions_8h_source_l00031}00031 \textcolor{comment}{** This file contains the default exception handlers}}
+\DoxyCodeLine{\Hypertarget{exceptions_8h_source_l00032}00032 \textcolor{comment}{** and exception table.}}
+\DoxyCodeLine{\Hypertarget{exceptions_8h_source_l00033}00033 \textcolor{comment}{*/}}
+\DoxyCodeLine{\Hypertarget{exceptions_8h_source_l00034}00034 }
+\DoxyCodeLine{\Hypertarget{exceptions_8h_source_l00035}00035 \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{exceptions_8h_source_l00036}00036 \textcolor{comment}{//         Types}}
+\DoxyCodeLine{\Hypertarget{exceptions_8h_source_l00037}00037 \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{exceptions_8h_source_l00038}00038 }
+\DoxyCodeLine{\Hypertarget{exceptions_8h_source_l00040}00040 \textcolor{comment}{//typedef void( *IrqHandler )( void );}}
+\DoxyCodeLine{\Hypertarget{exceptions_8h_source_l00041}00041 \textcolor{keyword}{typedef} void( *IntFunc )( void );}
+\DoxyCodeLine{\Hypertarget{exceptions_8h_source_l00042}00042 }
+\DoxyCodeLine{\Hypertarget{exceptions_8h_source_l00044}00044 }
+\DoxyCodeLine{\Hypertarget{exceptions_8h_source_l00045}00045 \textcolor{preprocessor}{\#if defined   ( \_\_CC\_ARM   )}}
+\DoxyCodeLine{\Hypertarget{exceptions_8h_source_l00046}00046 \textcolor{preprocessor}{    \#define WEAK \_\_attribute\_\_ ((weak))}}
+\DoxyCodeLine{\Hypertarget{exceptions_8h_source_l00047}00047 \textcolor{preprocessor}{\#elif defined ( \_\_ICCARM\_\_ )}}
+\DoxyCodeLine{\Hypertarget{exceptions_8h_source_l00048}00048 \textcolor{preprocessor}{    \#define WEAK \_\_weak}}
+\DoxyCodeLine{\Hypertarget{exceptions_8h_source_l00049}00049 \textcolor{preprocessor}{\#elif defined (  \_\_GNUC\_\_  )}}
+\DoxyCodeLine{\Hypertarget{exceptions_8h_source_l00050}00050 \textcolor{preprocessor}{    \#define WEAK \_\_attribute\_\_ ((weak))}}
+\DoxyCodeLine{\Hypertarget{exceptions_8h_source_l00051}00051 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{exceptions_8h_source_l00052}00052 }
+\DoxyCodeLine{\Hypertarget{exceptions_8h_source_l00053}00053 \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{exceptions_8h_source_l00054}00054 \textcolor{comment}{//         Global functions}}
+\DoxyCodeLine{\Hypertarget{exceptions_8h_source_l00055}00055 \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{exceptions_8h_source_l00056}00056 }
+\DoxyCodeLine{\Hypertarget{exceptions_8h_source_l00057}00057 \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{exceptions_8h_source_l00058}00058 \textcolor{comment}{//         Exception Handlers}}
+\DoxyCodeLine{\Hypertarget{exceptions_8h_source_l00059}00059 \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{exceptions_8h_source_l00060}00060 }
+\DoxyCodeLine{\Hypertarget{exceptions_8h_source_l00061}00061 \textcolor{keyword}{extern} WEAK \textcolor{keywordtype}{void} NMI\_Handler( \textcolor{keywordtype}{void} );}
+\DoxyCodeLine{\Hypertarget{exceptions_8h_source_l00062}00062 \textcolor{keyword}{extern} WEAK \textcolor{keywordtype}{void} HardFault\_Handler( \textcolor{keywordtype}{void} );}
+\DoxyCodeLine{\Hypertarget{exceptions_8h_source_l00063}00063 \textcolor{keyword}{extern} WEAK \textcolor{keywordtype}{void} MemManage\_Handler( \textcolor{keywordtype}{void} );}
+\DoxyCodeLine{\Hypertarget{exceptions_8h_source_l00064}00064 \textcolor{keyword}{extern} WEAK \textcolor{keywordtype}{void} BusFault\_Handler( \textcolor{keywordtype}{void} );}
+\DoxyCodeLine{\Hypertarget{exceptions_8h_source_l00065}00065 \textcolor{keyword}{extern} WEAK \textcolor{keywordtype}{void} UsageFault\_Handler( \textcolor{keywordtype}{void} );}
+\DoxyCodeLine{\Hypertarget{exceptions_8h_source_l00066}00066 \textcolor{keyword}{extern} WEAK \textcolor{keywordtype}{void} SVC\_Handler( \textcolor{keywordtype}{void} );}
+\DoxyCodeLine{\Hypertarget{exceptions_8h_source_l00067}00067 \textcolor{keyword}{extern} WEAK \textcolor{keywordtype}{void} DebugMon\_Handler( \textcolor{keywordtype}{void} );}
+\DoxyCodeLine{\Hypertarget{exceptions_8h_source_l00068}00068 \textcolor{keyword}{extern} WEAK \textcolor{keywordtype}{void} PendSV\_Handler( \textcolor{keywordtype}{void} );}
+\DoxyCodeLine{\Hypertarget{exceptions_8h_source_l00069}00069 \textcolor{keyword}{extern} WEAK \textcolor{keywordtype}{void} SysTick\_Handler( \textcolor{keywordtype}{void} );}
+\DoxyCodeLine{\Hypertarget{exceptions_8h_source_l00070}00070 \textcolor{keywordtype}{void} IrqHandlerNotUsed(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{\Hypertarget{exceptions_8h_source_l00071}00071 }
+\DoxyCodeLine{\Hypertarget{exceptions_8h_source_l00072}00072 }
+\DoxyCodeLine{\Hypertarget{exceptions_8h_source_l00073}00073 \textcolor{comment}{// System Controller}}
+\DoxyCodeLine{\Hypertarget{exceptions_8h_source_l00074}00074 \textcolor{keyword}{extern} \textcolor{keywordtype}{void} SYS\_IrqHandler(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{\Hypertarget{exceptions_8h_source_l00075}00075 \textcolor{comment}{// SUPPLY CONTROLLER}}
+\DoxyCodeLine{\Hypertarget{exceptions_8h_source_l00076}00076 \textcolor{keyword}{extern} WEAK \textcolor{keywordtype}{void} SUPC\_IrqHandler(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{\Hypertarget{exceptions_8h_source_l00077}00077 \textcolor{comment}{// RESET CONTROLLER}}
+\DoxyCodeLine{\Hypertarget{exceptions_8h_source_l00078}00078 \textcolor{keyword}{extern} WEAK \textcolor{keywordtype}{void} RSTC\_IrqHandler(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{\Hypertarget{exceptions_8h_source_l00079}00079 \textcolor{comment}{// REAL TIME CLOCK}}
+\DoxyCodeLine{\Hypertarget{exceptions_8h_source_l00080}00080 \textcolor{keyword}{extern} WEAK \textcolor{keywordtype}{void} RTC\_IrqHandler(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{\Hypertarget{exceptions_8h_source_l00081}00081 \textcolor{comment}{// REAL TIME TIMER}}
+\DoxyCodeLine{\Hypertarget{exceptions_8h_source_l00082}00082 \textcolor{keyword}{extern} WEAK \textcolor{keywordtype}{void} RTT\_IrqHandler(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{\Hypertarget{exceptions_8h_source_l00083}00083 \textcolor{comment}{// WATCHDOG TIMER}}
+\DoxyCodeLine{\Hypertarget{exceptions_8h_source_l00084}00084 \textcolor{keyword}{extern} WEAK \textcolor{keywordtype}{void} WDT\_IrqHandler(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{\Hypertarget{exceptions_8h_source_l00085}00085 \textcolor{comment}{// PMC}}
+\DoxyCodeLine{\Hypertarget{exceptions_8h_source_l00086}00086 \textcolor{keyword}{extern} WEAK \textcolor{keywordtype}{void} PMC\_IrqHandler(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{\Hypertarget{exceptions_8h_source_l00087}00087 \textcolor{comment}{// EFC0}}
+\DoxyCodeLine{\Hypertarget{exceptions_8h_source_l00088}00088 \textcolor{keyword}{extern} WEAK \textcolor{keywordtype}{void} EFC0\_IrqHandler(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{\Hypertarget{exceptions_8h_source_l00089}00089 \textcolor{comment}{// EFC1}}
+\DoxyCodeLine{\Hypertarget{exceptions_8h_source_l00090}00090 \textcolor{keyword}{extern} WEAK \textcolor{keywordtype}{void} EFC1\_IrqHandler(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{\Hypertarget{exceptions_8h_source_l00091}00091 \textcolor{comment}{// DBGU}}
+\DoxyCodeLine{\Hypertarget{exceptions_8h_source_l00092}00092 \textcolor{keyword}{extern} WEAK \textcolor{keywordtype}{void} DBGU\_IrqHandler(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{\Hypertarget{exceptions_8h_source_l00093}00093 \textcolor{comment}{// HSMC4}}
+\DoxyCodeLine{\Hypertarget{exceptions_8h_source_l00094}00094 \textcolor{keyword}{extern} WEAK \textcolor{keywordtype}{void} HSMC4\_IrqHandler(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{\Hypertarget{exceptions_8h_source_l00095}00095 \textcolor{comment}{// Parallel IO Controller A}}
+\DoxyCodeLine{\Hypertarget{exceptions_8h_source_l00096}00096 \textcolor{keyword}{extern} WEAK \textcolor{keywordtype}{void} PIOA\_IrqHandler(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{\Hypertarget{exceptions_8h_source_l00097}00097 \textcolor{comment}{// Parallel IO Controller B}}
+\DoxyCodeLine{\Hypertarget{exceptions_8h_source_l00098}00098 \textcolor{keyword}{extern} WEAK \textcolor{keywordtype}{void} PIOB\_IrqHandler(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{\Hypertarget{exceptions_8h_source_l00099}00099 \textcolor{comment}{// Parallel IO Controller C}}
+\DoxyCodeLine{\Hypertarget{exceptions_8h_source_l00100}00100 \textcolor{keyword}{extern} WEAK \textcolor{keywordtype}{void} PIOC\_IrqHandler(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{\Hypertarget{exceptions_8h_source_l00101}00101 \textcolor{comment}{// USART 0}}
+\DoxyCodeLine{\Hypertarget{exceptions_8h_source_l00102}00102 \textcolor{keyword}{extern} WEAK \textcolor{keywordtype}{void} USART0\_IrqHandler(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{\Hypertarget{exceptions_8h_source_l00103}00103 \textcolor{comment}{// USART 1}}
+\DoxyCodeLine{\Hypertarget{exceptions_8h_source_l00104}00104 \textcolor{keyword}{extern} WEAK \textcolor{keywordtype}{void} USART1\_IrqHandler(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{\Hypertarget{exceptions_8h_source_l00105}00105 \textcolor{comment}{// USART 2}}
+\DoxyCodeLine{\Hypertarget{exceptions_8h_source_l00106}00106 \textcolor{keyword}{extern} WEAK \textcolor{keywordtype}{void} USART2\_IrqHandler(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{\Hypertarget{exceptions_8h_source_l00107}00107 \textcolor{comment}{// USART 3}}
+\DoxyCodeLine{\Hypertarget{exceptions_8h_source_l00108}00108 \textcolor{keyword}{extern} WEAK \textcolor{keywordtype}{void} USART3\_IrqHandler(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{\Hypertarget{exceptions_8h_source_l00109}00109 \textcolor{comment}{// Multimedia Card Interface}}
+\DoxyCodeLine{\Hypertarget{exceptions_8h_source_l00110}00110 \textcolor{keyword}{extern} WEAK \textcolor{keywordtype}{void} MCI0\_IrqHandler(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{\Hypertarget{exceptions_8h_source_l00111}00111 \textcolor{comment}{// TWI 0}}
+\DoxyCodeLine{\Hypertarget{exceptions_8h_source_l00112}00112 \textcolor{keyword}{extern} WEAK \textcolor{keywordtype}{void} TWI0\_IrqHandler(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{\Hypertarget{exceptions_8h_source_l00113}00113 \textcolor{comment}{// TWI 1}}
+\DoxyCodeLine{\Hypertarget{exceptions_8h_source_l00114}00114 \textcolor{keyword}{extern} WEAK \textcolor{keywordtype}{void} TWI1\_IrqHandler(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{\Hypertarget{exceptions_8h_source_l00115}00115 \textcolor{comment}{// Serial Peripheral Interface 0}}
+\DoxyCodeLine{\Hypertarget{exceptions_8h_source_l00116}00116 \textcolor{keyword}{extern} WEAK \textcolor{keywordtype}{void} SPI0\_IrqHandler(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{\Hypertarget{exceptions_8h_source_l00117}00117 \textcolor{comment}{// Serial Synchronous Controller 0}}
+\DoxyCodeLine{\Hypertarget{exceptions_8h_source_l00118}00118 \textcolor{keyword}{extern} WEAK \textcolor{keywordtype}{void} SSC0\_IrqHandler(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{\Hypertarget{exceptions_8h_source_l00119}00119 \textcolor{comment}{// Timer Counter 0}}
+\DoxyCodeLine{\Hypertarget{exceptions_8h_source_l00120}00120 \textcolor{keyword}{extern} WEAK \textcolor{keywordtype}{void} TC0\_IrqHandler(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{\Hypertarget{exceptions_8h_source_l00121}00121 \textcolor{comment}{// Timer Counter 1}}
+\DoxyCodeLine{\Hypertarget{exceptions_8h_source_l00122}00122 \textcolor{keyword}{extern} WEAK \textcolor{keywordtype}{void} TC1\_IrqHandler(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{\Hypertarget{exceptions_8h_source_l00123}00123 \textcolor{comment}{// Timer Counter 2}}
+\DoxyCodeLine{\Hypertarget{exceptions_8h_source_l00124}00124 \textcolor{keyword}{extern} WEAK \textcolor{keywordtype}{void} TC2\_IrqHandler(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{\Hypertarget{exceptions_8h_source_l00125}00125 \textcolor{comment}{// PWM Controller}}
+\DoxyCodeLine{\Hypertarget{exceptions_8h_source_l00126}00126 \textcolor{keyword}{extern} WEAK \textcolor{keywordtype}{void} PWM\_IrqHandler(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{\Hypertarget{exceptions_8h_source_l00127}00127 \textcolor{comment}{// ADC controller0}}
+\DoxyCodeLine{\Hypertarget{exceptions_8h_source_l00128}00128 \textcolor{keyword}{extern} WEAK \textcolor{keywordtype}{void} ADCC0\_IrqHandler(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{\Hypertarget{exceptions_8h_source_l00129}00129 \textcolor{comment}{// ADC controller1}}
+\DoxyCodeLine{\Hypertarget{exceptions_8h_source_l00130}00130 \textcolor{keyword}{extern} WEAK \textcolor{keywordtype}{void} ADCC1\_IrqHandler(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{\Hypertarget{exceptions_8h_source_l00131}00131 \textcolor{comment}{// HDMA}}
+\DoxyCodeLine{\Hypertarget{exceptions_8h_source_l00132}00132 \textcolor{keyword}{extern} WEAK \textcolor{keywordtype}{void} HDMA\_IrqHandler(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{\Hypertarget{exceptions_8h_source_l00133}00133 \textcolor{comment}{// USB Device High Speed UDP\_HS}}
+\DoxyCodeLine{\Hypertarget{exceptions_8h_source_l00134}00134 \textcolor{keyword}{extern} WEAK \textcolor{keywordtype}{void} UDPD\_IrqHandler(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{\Hypertarget{exceptions_8h_source_l00135}00135 }
+
+\end{DoxyCode}

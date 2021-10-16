@@ -1,0 +1,136 @@
+\hypertarget{board__cstartup__iar_8c_source}{}\doxysection{D\+:/\+Ei\+E/eiebook/board\+\_\+cstartup\+\_\+iar.c}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{board__cstartup__iar_8c_source_l00001}00001 \textcolor{comment}{/* -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{board__cstartup__iar_8c_source_l00002}00002 \textcolor{comment}{ *         ATMEL Microcontroller Software Support }}
+\DoxyCodeLine{\Hypertarget{board__cstartup__iar_8c_source_l00003}00003 \textcolor{comment}{ * -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{board__cstartup__iar_8c_source_l00004}00004 \textcolor{comment}{ * Copyright (c) 2008, Atmel Corporation}}
+\DoxyCodeLine{\Hypertarget{board__cstartup__iar_8c_source_l00005}00005 \textcolor{comment}{ *}}
+\DoxyCodeLine{\Hypertarget{board__cstartup__iar_8c_source_l00006}00006 \textcolor{comment}{ * All rights reserved.}}
+\DoxyCodeLine{\Hypertarget{board__cstartup__iar_8c_source_l00007}00007 \textcolor{comment}{ *}}
+\DoxyCodeLine{\Hypertarget{board__cstartup__iar_8c_source_l00008}00008 \textcolor{comment}{ * Redistribution and use in source and binary forms, with or without}}
+\DoxyCodeLine{\Hypertarget{board__cstartup__iar_8c_source_l00009}00009 \textcolor{comment}{ * modification, are permitted provided that the following conditions are met:}}
+\DoxyCodeLine{\Hypertarget{board__cstartup__iar_8c_source_l00010}00010 \textcolor{comment}{ *}}
+\DoxyCodeLine{\Hypertarget{board__cstartup__iar_8c_source_l00011}00011 \textcolor{comment}{ * -\/ Redistributions of source code must retain the above copyright notice,}}
+\DoxyCodeLine{\Hypertarget{board__cstartup__iar_8c_source_l00012}00012 \textcolor{comment}{ * this list of conditions and the disclaimer below.}}
+\DoxyCodeLine{\Hypertarget{board__cstartup__iar_8c_source_l00013}00013 \textcolor{comment}{ *}}
+\DoxyCodeLine{\Hypertarget{board__cstartup__iar_8c_source_l00014}00014 \textcolor{comment}{ * Atmel's name may not be used to endorse or promote products derived from}}
+\DoxyCodeLine{\Hypertarget{board__cstartup__iar_8c_source_l00015}00015 \textcolor{comment}{ * this software without specific prior written permission.}}
+\DoxyCodeLine{\Hypertarget{board__cstartup__iar_8c_source_l00016}00016 \textcolor{comment}{ *}}
+\DoxyCodeLine{\Hypertarget{board__cstartup__iar_8c_source_l00017}00017 \textcolor{comment}{ * DISCLAIMER: THIS SOFTWARE IS PROVIDED BY ATMEL "{}AS IS"{} AND ANY EXPRESS OR}}
+\DoxyCodeLine{\Hypertarget{board__cstartup__iar_8c_source_l00018}00018 \textcolor{comment}{ * IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF}}
+\DoxyCodeLine{\Hypertarget{board__cstartup__iar_8c_source_l00019}00019 \textcolor{comment}{ * MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NON-\/INFRINGEMENT ARE}}
+\DoxyCodeLine{\Hypertarget{board__cstartup__iar_8c_source_l00020}00020 \textcolor{comment}{ * DISCLAIMED. IN NO EVENT SHALL ATMEL BE LIABLE FOR ANY DIRECT, INDIRECT,}}
+\DoxyCodeLine{\Hypertarget{board__cstartup__iar_8c_source_l00021}00021 \textcolor{comment}{ * INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT}}
+\DoxyCodeLine{\Hypertarget{board__cstartup__iar_8c_source_l00022}00022 \textcolor{comment}{ * LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA,}}
+\DoxyCodeLine{\Hypertarget{board__cstartup__iar_8c_source_l00023}00023 \textcolor{comment}{ * OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF}}
+\DoxyCodeLine{\Hypertarget{board__cstartup__iar_8c_source_l00024}00024 \textcolor{comment}{ * LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING}}
+\DoxyCodeLine{\Hypertarget{board__cstartup__iar_8c_source_l00025}00025 \textcolor{comment}{ * NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,}}
+\DoxyCodeLine{\Hypertarget{board__cstartup__iar_8c_source_l00026}00026 \textcolor{comment}{ * EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.}}
+\DoxyCodeLine{\Hypertarget{board__cstartup__iar_8c_source_l00027}00027 \textcolor{comment}{ * -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{board__cstartup__iar_8c_source_l00028}00028 \textcolor{comment}{ */}}
+\DoxyCodeLine{\Hypertarget{board__cstartup__iar_8c_source_l00029}00029 }
+\DoxyCodeLine{\Hypertarget{board__cstartup__iar_8c_source_l00030}00030 \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{board__cstartup__iar_8c_source_l00031}00031 \textcolor{comment}{//         Headers}}
+\DoxyCodeLine{\Hypertarget{board__cstartup__iar_8c_source_l00032}00032 \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{board__cstartup__iar_8c_source_l00033}00033 \textcolor{preprocessor}{\#include "{}exceptions.h"{}}}
+\DoxyCodeLine{\Hypertarget{board__cstartup__iar_8c_source_l00034}00034 \textcolor{preprocessor}{\#include "{}AT91SAM3U4.h"{}}}
+\DoxyCodeLine{\Hypertarget{board__cstartup__iar_8c_source_l00035}00035 }
+\DoxyCodeLine{\Hypertarget{board__cstartup__iar_8c_source_l00036}00036 \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{board__cstartup__iar_8c_source_l00037}00037 \textcolor{comment}{//         Types}}
+\DoxyCodeLine{\Hypertarget{board__cstartup__iar_8c_source_l00038}00038 \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{board__cstartup__iar_8c_source_l00039}\mbox{\hyperlink{union_int_vector}{00039}} \textcolor{keyword}{typedef} \textcolor{keyword}{union }\{ IntFunc \_\_fun; \textcolor{keywordtype}{void} * \_\_ptr; \} \mbox{\hyperlink{union_int_vector}{IntVector}};}
+\DoxyCodeLine{\Hypertarget{board__cstartup__iar_8c_source_l00040}00040 }
+\DoxyCodeLine{\Hypertarget{board__cstartup__iar_8c_source_l00041}00041 \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{board__cstartup__iar_8c_source_l00042}00042 \textcolor{comment}{//         ProtoTypes}}
+\DoxyCodeLine{\Hypertarget{board__cstartup__iar_8c_source_l00043}00043 \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{board__cstartup__iar_8c_source_l00044}00044 }
+\DoxyCodeLine{\Hypertarget{board__cstartup__iar_8c_source_l00045}00045 \textcolor{keyword}{extern} \textcolor{keywordtype}{void} \_\_iar\_program\_start( \textcolor{keywordtype}{void} );}
+\DoxyCodeLine{\Hypertarget{board__cstartup__iar_8c_source_l00046}00046 }
+\DoxyCodeLine{\Hypertarget{board__cstartup__iar_8c_source_l00047}00047 \textcolor{keywordtype}{int} \_\_low\_level\_init( \textcolor{keywordtype}{void} );}
+\DoxyCodeLine{\Hypertarget{board__cstartup__iar_8c_source_l00048}00048 }
+\DoxyCodeLine{\Hypertarget{board__cstartup__iar_8c_source_l00049}00049 \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{board__cstartup__iar_8c_source_l00050}00050 \textcolor{comment}{//         Variables}}
+\DoxyCodeLine{\Hypertarget{board__cstartup__iar_8c_source_l00051}00051 \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{board__cstartup__iar_8c_source_l00052}00052 \textcolor{keyword}{extern} \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} \_\_ICFEDIT\_vector\_start\_\_;}
+\DoxyCodeLine{\Hypertarget{board__cstartup__iar_8c_source_l00053}00053 }
+\DoxyCodeLine{\Hypertarget{board__cstartup__iar_8c_source_l00054}00054 \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{board__cstartup__iar_8c_source_l00055}00055 \textcolor{comment}{//         Exception Table}}
+\DoxyCodeLine{\Hypertarget{board__cstartup__iar_8c_source_l00056}00056 \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{board__cstartup__iar_8c_source_l00057}00057 }
+\DoxyCodeLine{\Hypertarget{board__cstartup__iar_8c_source_l00058}00058 \textcolor{preprocessor}{\#pragma language=extended}}
+\DoxyCodeLine{\Hypertarget{board__cstartup__iar_8c_source_l00059}00059 \textcolor{preprocessor}{\#pragma segment="{}CSTACK"{}}}
+\DoxyCodeLine{\Hypertarget{board__cstartup__iar_8c_source_l00060}00060 }
+\DoxyCodeLine{\Hypertarget{board__cstartup__iar_8c_source_l00061}00061 \textcolor{comment}{// The name "{}\_\_vector\_table"{} has special meaning for C-\/SPY:}}
+\DoxyCodeLine{\Hypertarget{board__cstartup__iar_8c_source_l00062}00062 \textcolor{comment}{// it is where the SP start value is found, and the NVIC vector}}
+\DoxyCodeLine{\Hypertarget{board__cstartup__iar_8c_source_l00063}00063 \textcolor{comment}{// table register (VTOR) is initialized to this address if != 0.}}
+\DoxyCodeLine{\Hypertarget{board__cstartup__iar_8c_source_l00064}00064 }
+\DoxyCodeLine{\Hypertarget{board__cstartup__iar_8c_source_l00065}00065 \textcolor{preprocessor}{\#pragma section = "{}.vectors"{}}}
+\DoxyCodeLine{\Hypertarget{board__cstartup__iar_8c_source_l00066}00066 \textcolor{preprocessor}{\#pragma location = "{}.vectors"{}}}
+\DoxyCodeLine{\Hypertarget{board__cstartup__iar_8c_source_l00067}00067 \textcolor{keyword}{const} \mbox{\hyperlink{union_int_vector}{IntVector}} \_\_vector\_table[] =}
+\DoxyCodeLine{\Hypertarget{board__cstartup__iar_8c_source_l00068}00068 \{}
+\DoxyCodeLine{\Hypertarget{board__cstartup__iar_8c_source_l00069}00069     \{ .\_\_ptr = \_\_sfe( \textcolor{stringliteral}{"{}CSTACK"{}} ) \},}
+\DoxyCodeLine{\Hypertarget{board__cstartup__iar_8c_source_l00070}00070     \_\_iar\_program\_start,}
+\DoxyCodeLine{\Hypertarget{board__cstartup__iar_8c_source_l00071}00071 }
+\DoxyCodeLine{\Hypertarget{board__cstartup__iar_8c_source_l00072}00072     NMI\_Handler,}
+\DoxyCodeLine{\Hypertarget{board__cstartup__iar_8c_source_l00073}00073     HardFault\_Handler,}
+\DoxyCodeLine{\Hypertarget{board__cstartup__iar_8c_source_l00074}00074     MemManage\_Handler,}
+\DoxyCodeLine{\Hypertarget{board__cstartup__iar_8c_source_l00075}00075     BusFault\_Handler,}
+\DoxyCodeLine{\Hypertarget{board__cstartup__iar_8c_source_l00076}00076     UsageFault\_Handler,}
+\DoxyCodeLine{\Hypertarget{board__cstartup__iar_8c_source_l00077}00077     0, 0, 0, 0,             \textcolor{comment}{// Reserved}}
+\DoxyCodeLine{\Hypertarget{board__cstartup__iar_8c_source_l00078}00078     SVC\_Handler,}
+\DoxyCodeLine{\Hypertarget{board__cstartup__iar_8c_source_l00079}00079     DebugMon\_Handler,}
+\DoxyCodeLine{\Hypertarget{board__cstartup__iar_8c_source_l00080}00080     0,                      \textcolor{comment}{// Reserved}}
+\DoxyCodeLine{\Hypertarget{board__cstartup__iar_8c_source_l00081}00081     PendSV\_Handler,}
+\DoxyCodeLine{\Hypertarget{board__cstartup__iar_8c_source_l00082}00082     SysTick\_Handler,}
+\DoxyCodeLine{\Hypertarget{board__cstartup__iar_8c_source_l00083}00083 }
+\DoxyCodeLine{\Hypertarget{board__cstartup__iar_8c_source_l00084}00084     \textcolor{comment}{// Configurable interrupts}}
+\DoxyCodeLine{\Hypertarget{board__cstartup__iar_8c_source_l00085}00085     SUPC\_IrqHandler,    \textcolor{comment}{// 0  SUPPLY CONTROLLER}}
+\DoxyCodeLine{\Hypertarget{board__cstartup__iar_8c_source_l00086}00086     RSTC\_IrqHandler,    \textcolor{comment}{// 1  RESET CONTROLLER}}
+\DoxyCodeLine{\Hypertarget{board__cstartup__iar_8c_source_l00087}00087     RTC\_IrqHandler,     \textcolor{comment}{// 2  REAL TIME CLOCK}}
+\DoxyCodeLine{\Hypertarget{board__cstartup__iar_8c_source_l00088}00088     RTT\_IrqHandler,     \textcolor{comment}{// 3  REAL TIME TIMER}}
+\DoxyCodeLine{\Hypertarget{board__cstartup__iar_8c_source_l00089}00089     WDT\_IrqHandler,     \textcolor{comment}{// 4  WATCHDOG TIMER}}
+\DoxyCodeLine{\Hypertarget{board__cstartup__iar_8c_source_l00090}00090     PMC\_IrqHandler,     \textcolor{comment}{// 5  PMC}}
+\DoxyCodeLine{\Hypertarget{board__cstartup__iar_8c_source_l00091}00091     EFC0\_IrqHandler,    \textcolor{comment}{// 6  EFC0}}
+\DoxyCodeLine{\Hypertarget{board__cstartup__iar_8c_source_l00092}00092     EFC1\_IrqHandler,    \textcolor{comment}{// 7  EFC1}}
+\DoxyCodeLine{\Hypertarget{board__cstartup__iar_8c_source_l00093}00093     DBGU\_IrqHandler,    \textcolor{comment}{// 8  DBGU}}
+\DoxyCodeLine{\Hypertarget{board__cstartup__iar_8c_source_l00094}00094     HSMC4\_IrqHandler,   \textcolor{comment}{// 9  HSMC4}}
+\DoxyCodeLine{\Hypertarget{board__cstartup__iar_8c_source_l00095}00095     PIOA\_IrqHandler,    \textcolor{comment}{// 10 Parallel IO Controller A}}
+\DoxyCodeLine{\Hypertarget{board__cstartup__iar_8c_source_l00096}00096     PIOB\_IrqHandler,    \textcolor{comment}{// 11 Parallel IO Controller B}}
+\DoxyCodeLine{\Hypertarget{board__cstartup__iar_8c_source_l00097}00097     PIOC\_IrqHandler,    \textcolor{comment}{// 12 Parallel IO Controller C}}
+\DoxyCodeLine{\Hypertarget{board__cstartup__iar_8c_source_l00098}00098     USART0\_IrqHandler,  \textcolor{comment}{// 13 USART 0}}
+\DoxyCodeLine{\Hypertarget{board__cstartup__iar_8c_source_l00099}00099     USART1\_IrqHandler,  \textcolor{comment}{// 14 USART 1}}
+\DoxyCodeLine{\Hypertarget{board__cstartup__iar_8c_source_l00100}00100     USART2\_IrqHandler,  \textcolor{comment}{// 15 USART 2}}
+\DoxyCodeLine{\Hypertarget{board__cstartup__iar_8c_source_l00101}00101     USART3\_IrqHandler,  \textcolor{comment}{// 16 USART 3}}
+\DoxyCodeLine{\Hypertarget{board__cstartup__iar_8c_source_l00102}00102     MCI0\_IrqHandler,    \textcolor{comment}{// 17 Multimedia Card Interface}}
+\DoxyCodeLine{\Hypertarget{board__cstartup__iar_8c_source_l00103}00103     TWI0\_IrqHandler,    \textcolor{comment}{// 18 TWI 0}}
+\DoxyCodeLine{\Hypertarget{board__cstartup__iar_8c_source_l00104}00104     TWI1\_IrqHandler,    \textcolor{comment}{// 19 TWI 1}}
+\DoxyCodeLine{\Hypertarget{board__cstartup__iar_8c_source_l00105}00105     SPI0\_IrqHandler,    \textcolor{comment}{// 20 Serial Peripheral Interface}}
+\DoxyCodeLine{\Hypertarget{board__cstartup__iar_8c_source_l00106}00106     SSC0\_IrqHandler,    \textcolor{comment}{// 21 Serial Synchronous Controller 0}}
+\DoxyCodeLine{\Hypertarget{board__cstartup__iar_8c_source_l00107}00107     TC0\_IrqHandler,     \textcolor{comment}{// 22 Timer Counter 0}}
+\DoxyCodeLine{\Hypertarget{board__cstartup__iar_8c_source_l00108}00108     TC1\_IrqHandler,     \textcolor{comment}{// 23 Timer Counter 1}}
+\DoxyCodeLine{\Hypertarget{board__cstartup__iar_8c_source_l00109}00109     TC2\_IrqHandler,     \textcolor{comment}{// 24 Timer Counter 2}}
+\DoxyCodeLine{\Hypertarget{board__cstartup__iar_8c_source_l00110}00110     PWM\_IrqHandler,     \textcolor{comment}{// 25 Pulse Width Modulation Controller}}
+\DoxyCodeLine{\Hypertarget{board__cstartup__iar_8c_source_l00111}00111     ADCC0\_IrqHandler,   \textcolor{comment}{// 26 ADC controller0}}
+\DoxyCodeLine{\Hypertarget{board__cstartup__iar_8c_source_l00112}00112     ADCC1\_IrqHandler,   \textcolor{comment}{// 27 ADC controller1}}
+\DoxyCodeLine{\Hypertarget{board__cstartup__iar_8c_source_l00113}00113     HDMA\_IrqHandler,    \textcolor{comment}{// 28 HDMA}}
+\DoxyCodeLine{\Hypertarget{board__cstartup__iar_8c_source_l00114}00114     UDPD\_IrqHandler,   \textcolor{comment}{// 29 USB Device High Speed UDP\_HS}}
+\DoxyCodeLine{\Hypertarget{board__cstartup__iar_8c_source_l00115}00115     IrqHandlerNotUsed   \textcolor{comment}{// 30 not used}}
+\DoxyCodeLine{\Hypertarget{board__cstartup__iar_8c_source_l00116}00116 \};}
+\DoxyCodeLine{\Hypertarget{board__cstartup__iar_8c_source_l00117}00117 }
+\DoxyCodeLine{\Hypertarget{board__cstartup__iar_8c_source_l00118}00118 \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{board__cstartup__iar_8c_source_l00119}00119 \textcolor{comment}{//         Exported functions}}
+\DoxyCodeLine{\Hypertarget{board__cstartup__iar_8c_source_l00120}00120 \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{board__cstartup__iar_8c_source_l00121}00121 }
+\DoxyCodeLine{\Hypertarget{board__cstartup__iar_8c_source_l00122}00122 \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{board__cstartup__iar_8c_source_l00125}00125 \textcolor{comment}{}\textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{board__cstartup__iar_8c_source_l00126}00126 \textcolor{keywordtype}{int} \_\_low\_level\_init( \textcolor{keywordtype}{void} )}
+\DoxyCodeLine{\Hypertarget{board__cstartup__iar_8c_source_l00127}00127 \{}
+\DoxyCodeLine{\Hypertarget{board__cstartup__iar_8c_source_l00128}00128     \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} * src = \_\_section\_begin(\textcolor{stringliteral}{"{}.vectors"{}});}
+\DoxyCodeLine{\Hypertarget{board__cstartup__iar_8c_source_l00129}00129 }
+\DoxyCodeLine{\Hypertarget{board__cstartup__iar_8c_source_l00130}00130     AT91C\_BASE\_NVIC-\/>NVIC\_VTOFFR = ((\textcolor{keywordtype}{unsigned} int)(src)) | (0x0 << 7);}
+\DoxyCodeLine{\Hypertarget{board__cstartup__iar_8c_source_l00131}00131     }
+\DoxyCodeLine{\Hypertarget{board__cstartup__iar_8c_source_l00132}00132     \textcolor{keywordflow}{return} 1; \textcolor{comment}{// if return 0, the data sections will not be initialized.}}
+\DoxyCodeLine{\Hypertarget{board__cstartup__iar_8c_source_l00133}00133 \}}
+
+\end{DoxyCode}
