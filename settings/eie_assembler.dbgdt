@@ -960,7 +960,7 @@
             </BasePane-34100>
             <IarPane-34100>
                 <expressions>
-                    <item></item>
+                    <item />
                 </expressions>
                 <col-names>
                     <item>Expression</item>
@@ -990,7 +990,7 @@
             </BasePane-34101>
             <IarPane-34101>
                 <expressions>
-                    <item></item>
+                    <item />
                 </expressions>
                 <col-names>
                     <item>Expression</item>
