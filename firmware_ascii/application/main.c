@@ -10,6 +10,9 @@ Global variable definitions with scope across entire project.
 All Global variable names shall start with "G_"
 ***********************************************************************************************************************/
 /* New variables */
+volatile u32 G_u32SystemTime1ms = 0;  /* Global system time incremented every ms, max 2^32 (~49 days) */
+volatile u32 G_u32SystemTime1s = 0;   /* Global system time incremented every second, max 2^32 (~136 years */
+volatile u32 G_u32SystemFlags = 0;    /* Global system flags */
 
 
 /*--------------------------------------------------------------------------------------------------------------------*/
@@ -39,6 +42,15 @@ void main(void)
   while(1)
   {
     WATCHDOG_BONE();
+    
+    /* System sleep */
+    HEARTBEAT_OFF();
+    do
+    {
+      SystemSleep();
+    } while(G_u32SystemFlags & _SYSTEM_SLEEPING);
+    
+    HEARTBEAT_ON();
     
   }  /* end while(1) main super loop */
   

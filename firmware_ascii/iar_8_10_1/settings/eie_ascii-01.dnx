@@ -12,7 +12,7 @@
         <ByteLimit>50</ByteLimit>
     </Stack>
     <DebugChecksum>
-        <Checksum>322372937</Checksum>
+        <Checksum>3082414132</Checksum>
     </DebugChecksum>
     <CodeCoverage>
         <Enabled>0</Enabled>
@@ -68,14 +68,14 @@
         <FreqHi>0</FreqHi>
         <MultiCoreRunAll>1</MultiCoreRunAll>
     </Simulator>
-    <watch_formats>
-        <Fmt0>{W}1:0x400E0E00	4	0</Fmt0>
-        <Fmt1>{W}1:PIOB_PSR	4	0</Fmt1>
-    </watch_formats>
     <Trace1>
         <Enabled>0</Enabled>
         <ShowSource>1</ShowSource>
     </Trace1>
+    <watch_formats>
+        <Fmt0>{W}1:0x400E0E00	4	0</Fmt0>
+        <Fmt1>{W}1:PIOB_PSR	4	0</Fmt1>
+    </watch_formats>
     <TermIOLog>
         <LoggingEnabled>_ 0</LoggingEnabled>
         <LogFile>_ ""</LogFile>

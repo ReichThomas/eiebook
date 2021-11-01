@@ -24,6 +24,7 @@ PROTECTED FUNCTIONS
 ***********************************************************************************************************************/
 
 #include "configuration.h"
+extern void kill_x_cycles(u32);
 
 /***********************************************************************************************************************
 Global variable definitions with scope across entire project.
@@ -34,7 +35,9 @@ All Global variable names shall start with "G_xxBsp"
 
 /*--------------------------------------------------------------------------------------------------------------------*/
 /* Existing variables (defined in other files -- should all contain the "extern" keyword) */
-
+extern volatile u32 G_u32SystemTime1ms;     /*!< @brief From main.c */
+extern volatile u32 G_u32SystemTime1s;      /*!< @brief From main.c */
+extern volatile u32 G_u32SystemFlags;       /*!< @brief From main.c */
 
 /***********************************************************************************************************************
 Global variable definitions with scope limited to this local application.
@@ -103,6 +106,25 @@ void GpioSetup(void)
   
 } /* end GpioSetup() */
 
+void SystemSleep(void)
+{
+  /* Set the sleep flag (which doesn't do anything yet) */
+  G_u32SystemFlags |= _SYSTEM_SLEEPING;
+  
+  /* Kill the desired number of instructions */
+  kill_x_cycles(48000);
+  
+  /* Clear the sleep flag */
+  G_u32SystemFlags &= ~_SYSTEM_SLEEPING;
+  
+  /* Update Timers */
+  G_u32SystemTime1ms++;
+  if( (G_u32SystemTime1ms % 1000) == 0)
+  {
+    G_u32SystemTime1s++;
+  }
+  
+} /* end SystemSleep(void) */
 
 
 /*--------------------------------------------------------------------------------------------------------------------*/

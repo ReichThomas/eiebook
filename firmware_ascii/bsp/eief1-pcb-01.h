@@ -29,7 +29,9 @@ Type Definitions
 /***********************************************************************************************************************
 * Macros
 ***********************************************************************************************************************/
-#define WATCHDOG_BONE()  (AT91C_BASE_WDTC->WDTC_WDCR = WDT_CR_FEED)  /* reloads the Watchdog countdown timer */
+#define WATCHDOG_BONE()   (AT91C_BASE_WDTC->WDTC_WDCR = WDT_CR_FEED)  /* reloads the Watchdog countdown timer */
+#define HEARTBEAT_ON()    (AT91C_BASE_PIOA->PIO_CODR = PA_31_HEARTBEAT)   /*!< @brief Turns on Heartbeat LED */
+#define HEARTBEAT_OFF()   (AT91C_BASE_PIOA->PIO_SODR = PA_31_HEARTBEAT)   /*!< @brief Turns off Heartbeat LED */
 
 /***********************************************************************************************************************
 * Function Declarations
@@ -46,6 +48,7 @@ Type Definitions
 void WatchDogSetup(void);
 void ClockSetup(void);
 void GpioSetup(void);
+void SystemSleep(void);
 
 /***********************************************************************************************************************
 !!!!! GPIO pin names
