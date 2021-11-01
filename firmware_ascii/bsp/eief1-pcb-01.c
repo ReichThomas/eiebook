@@ -68,7 +68,41 @@ void ClockSetup(void)
   /* Activate the peripheral clocks needed for the system */
   AT91C_BASE_PMC->PMC_PCER = PMC_PCER_INIT;
   
-} /* end ClockSetup */ 
+  /* Enable the Master Clock on the PKC0 clock out pin (PA_27_CLOCK_OUT) */
+  AT91C_BASE_PMC->PMC_PCKR[0] = AT91C_PMC_CSS_SYS_CLK | AT91C_PMC_PRES_CLK;
+  AT91C_BASE_PMC->PMC_SCER = AT91C_PMC_PCK0;
+  
+  /* Turn on the main oscillator and wait for it to start up */
+  AT91C_BASE_PMC->PMC_MOR = PMC_MOR_INIT;
+  while ( !(AT91C_BASE_PMC->PMC_SR & AT91C_PMC_MOSCXTS) );
+  
+  /* Assign main clock as crystal */
+  AT91C_BASE_PMC->PMC_MOR |= (AT91C_CKGR_MOSCSEL | MOR_KEY);
+  
+  /* Initialize PLLA and wait for lock */
+  AT91C_BASE_PMC->PMC_PLLAR = PMC_PLAAR_INIT;
+  while ( !(AT91C_BASE_PMC->PMC_SR & AT91C_PMC_LOCKA) );
+  
+  /* Assign the PLLA as the main system clock using the dequence suggested */
+  AT91C_BASE_PMC->PMC_MCKR = PMC_MCKR_INIT;
+  while ( !(AT91C_BASE_PMC->PMC_SR & AT91C_PMC_MCKRDY) );
+  AT91C_BASE_PMC->PMC_MCKR = PMC_MCKR_PLLA;
+  while ( !(AT91C_BASE_PMC->PMC_SR & AT91C_PMC_MCKRDY) );
+  
+  /* Initialize UTMI for USB usage */
+  AT91C_BASE_CKGR->CKGR_UCKR |= (AT91C_CKGR_UPLLCOUNT & (3 << 20)) | AT91C_CKGR_UPLLEN;
+  while ( !(AT91C_BASE_PMC->PMC_SR & AT91C_PMC_LOCKU) );
+  
+} /* end ClockSetup */
+
+void GpioSetup(void)
+{
+  /* Set up the pin function registers in port A */
+  AT91C_BASE_PIOA->PIO_PER = PA_31_HEARTBEAT;
+  AT91C_BASE_PIOA->PIO_OER = PA_31_HEARTBEAT;
+  
+} /* end GpioSetup() */
+
 
 
 /*--------------------------------------------------------------------------------------------------------------------*/

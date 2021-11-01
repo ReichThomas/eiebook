@@ -34,6 +34,7 @@ void main(void)
   /* Low level initialization */
   WatchDogSetup();
   ClockSetup();
+  GpioSetup();
   /* Super loop */
   while(1)
   {

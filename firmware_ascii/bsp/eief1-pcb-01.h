@@ -14,7 +14,16 @@ Type Definitions
 /***********************************************************************************************************************
 * Constants
 ***********************************************************************************************************************/
-
+#define OSC_VALUE       (u32)12000000     /* Crystal oscillator value */
+#define MAINCK          OSC_VALUE         /* Main clock is base crystal frequency */
+#define MULA            (u32)7            /* PLL multiplier */
+#define DIVA            (u32)1            /* PLL divider value */
+#define PLLACK_VALUE    (u32)(MAINCK * (MULA + 1)) / DIVA   /* PLL scaled clock */
+#define CPU_DIVIDER     (u32)2            /* Divider to get CPU clock */
+#define CCLK_VALUE      PLLACK_VALUE / CPU_DIVIDER    /* CPU clock 48 MHz */
+#define MCK             CCLK_VALUE        /* Alternate name for CPU clock 48 MHz */
+#define PERIPHERAL_DIVIDER  (u32)1        /* Peripheral clock divider */
+#define PCLK_VALUE      CCLK_VALUE / PERIPHERAL_DIVIDER   /* Peripheral clock 48 MHz */
 
 
 /***********************************************************************************************************************
@@ -36,12 +45,16 @@ Type Definitions
 /*--------------------------------------------------------------------------------------------------------------------*/
 void WatchDogSetup(void);
 void ClockSetup(void);
+void GpioSetup(void);
 
 /***********************************************************************************************************************
 !!!!! GPIO pin names
 ***********************************************************************************************************************/
 /* Hardware Definition for PCB EIEF1-PCB-01 */
 
+/* Port A bit positions */
+
+#define PA_31_HEARTBEAT     (u32)0x80000000
 
 
 /*! @cond DOXYGEN_EXCLUDE */
