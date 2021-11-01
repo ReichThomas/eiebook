@@ -20,7 +20,7 @@ Type Definitions
 /***********************************************************************************************************************
 * Macros
 ***********************************************************************************************************************/
-
+#define WATCHDOG_BONE()  (AT91C_BASE_WDTC->WDTC_WDCR = WDT_CR_FEED)  /* reloads the Watchdog countdown timer */
 
 /***********************************************************************************************************************
 * Function Declarations
@@ -45,7 +45,7 @@ void WatchDogSetup(void);
 
 /*! @cond DOXYGEN_EXCLUDE */
 /***********************************************************************************************************************
-Perihperal Setup Initializations
+Peripheral Setup Initializations
 
 Bookmarks:
 @@@@@ Clock, Power Control, Systick and Watchdog setup values
