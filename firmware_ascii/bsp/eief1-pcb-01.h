@@ -59,9 +59,76 @@ void SystemSleep(void);
 
 /* Port A bit positions */
 #define PA_31_HEARTBEAT         (u32)0x80000000
+#define PA_30_AN_DEMO           (u32)0x40000000
+#define PA_29_BUZZER2           (u32)0x20000000
+#define PA_28_BUZZER1           (u32)0x10000000
+#define PA_27_CLOCK_OUT         (u32)0x08000000
+#define PA_26_ANT_PWR_EN        (u32)0x04000000 
+#define PA_25_ANT_USPI2_SCK     (u32)0x02000000
+#define PA_24_SD_USPI1_SCK      (u32)0x01000000
+#define PA_23_ANT_USPI2_MOSI    (u32)0x00800000
+#define PA_22_ANT_USPI2_MISO    (u32)0x00400000 
+#define PA_21_SD_USPI1_MISO     (u32)0x00200000
+#define PA_20_SD_USPI1_MOSI     (u32)0x00100000
+#define PA_19_DEBUG_U0_PIMO     (u32)0x00080000
+#define PA_18_DEBUG_U0_POMI     (u32)0x00040000
+#define PA_17_BUTTON0           (u32)0x00020000
+#define PA_16_BLADE_CS          (u32)0x00010000
+#define PA_15_BLADE_SCK         (u32)0x00008000
+#define PA_14_BLADE_MOSI        (u32)0x00004000
+#define PA_13_BLADE_MISO        (u32)0x00002000
+#define PA_12_BLADE_UPOMI       (u32)0x00001000
+#define PA_11_BLADE_UPIMO       (u32)0x00000800
+#define PA_10_I2C_SCL           (u32)0x00000400
+#define PA_09_I2C_SDA           (u32)0x00000200
+#define PA_08_SD_CS_MCDA3       (u32)0x00000100
+#define PA_07_HSMCI_MCDA2       (u32)0x00000080
+#define PA_06_HSMCI_MCDA1       (u32)0x00000040
+#define PA_05_HSMCI_MCDA0       (u32)0x00000020
+#define PA_04_HSMCI_MCCDA       (u32)0x00000010
+#define PA_03_HSMCI_MCCK        (u32)0x00000008
+#define PA_02_SD_DETECT         (u32)0x00000004
+#define PA_01_SD_WP             (u32)0x00000002 
+#define PA_00_TP54              (u32)0x00000001 
+
+
+/* Port B bit positions */
+#define PB_31_                  (u32)0x80000000
+#define PB_30_                  (u32)0x40000000
+#define PB_29_                  (u32)0x20000000
+#define PB_28_                  (u32)0x10000000
+#define PB_27_                  (u32)0x08000000
+#define PB_26_                  (u32)0x04000000
+#define PB_25_                  (u32)0x02000000
+#define PB_24_ANT_SRDY          (u32)0x01000000
+#define PB_23_ANT_MRDY          (u32)0x00800000
+#define PB_22_ANT_USPI2_CS      (u32)0x00400000
+#define PB_21_ANT_RESET         (u32)0x00200000
+#define PB_20_LED_RED           (u32)0x00100000
+#define PB_19_LED_GRN           (u32)0x00080000
+#define PB_18_LED_BLU           (u32)0x00040000
+#define PB_17_LED_YLW           (u32)0x00020000
+#define PB_16_LED_CYN           (u32)0x00010000
+#define PB_15_LED_ORG           (u32)0x00008000
+#define PB_14_LED_PRP           (u32)0x00004000
+#define PB_13_LED_WHT           (u32)0x00002000
+#define PB_12_LCD_BL_BLU        (u32)0x00001000
+#define PB_11_LCD_BL_GRN        (u32)0x00000800
+#define PB_10_LCD_BL_RED        (u32)0x00000400
+#define PB_09_LCD_RST           (u32)0x00000200
+#define PB_08_TP62              (u32)0x00000100 
+#define PB_07_TP60              (u32)0x00000080
+#define PB_06_TP58              (u32)0x00000040
+#define PB_05_TP56              (u32)0x00000020
+#define PB_04_BLADE_AN1         (u32)0x00000010
+#define PB_03_BLADE_AN0         (u32)0x00000008
+#define PB_02_BUTTON3           (u32)0x00000004
+#define PB_01_BUTTON2           (u32)0x00000002
+#define PB_00_BUTTON1           (u32)0x00000001
 
 
 /*! @cond DOXYGEN_EXCLUDE */
+
 /***********************************************************************************************************************
 Perihperal Setup Initializations
 
