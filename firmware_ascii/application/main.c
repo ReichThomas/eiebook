@@ -41,10 +41,22 @@ void main(void)
   ClockSetup();
   GpioSetup();
   
+  /* Driver initialization */
+  LedInitialize();
+  
+  /* Application initialization */
+  UserApp1Initialize();
+  
   /* Super loop */  
   while(1)
   {
     WATCHDOG_BONE();
+    
+    /* Drivers */
+    LedRunActiveState();
+    
+    /* Applications */
+    UserApp1RunActiveState();
         
     /* System sleep */
     HEARTBEAT_OFF();

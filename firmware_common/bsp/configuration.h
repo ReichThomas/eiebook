@@ -56,6 +56,7 @@ Includes
 #endif /* MPGL2 */
 
 /* Common application header files */
+#include "user_app1.h"
 
 
 #endif /* __CONFIG_H */

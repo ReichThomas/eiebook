@@ -9,7 +9,17 @@
 /***********************************************************************************************************************
 Type Definitions
 ***********************************************************************************************************************/
+/*!
+@enum LedNameType
+@brief Logical names for LEDs in the system.
 
+The order of the LEDs in LedNameType must match the order of the definition
+in G_asBspLedConfigurations from eiefq-pcb-01.c
+*/
+typedef enum {WHITE = 0, PURPLE, BLUE, CYAN, GREEN, YELLOW, ORANGE, RED, LCD_RED,
+LCD_GREEN, LCD_BLUE} LedNameType;
+
+#define U8_TOTAL_LEDS (u8)11   /*!< Total number of LEDs in the system */
 
 /***********************************************************************************************************************
 * Constants
