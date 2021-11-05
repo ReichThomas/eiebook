@@ -31,7 +31,7 @@ typedef struct
   u32 u32BitPosition;             /*!< @brief LED bit position within port */
   LedPortType ePort;              /*!< @brief LED port position */
   LedActiveType eActiveState;     /*!< @brief LED hardware active type */
-}LedConfigurationType;
+} LedConfigurationType;
 
 /*! 
 @enum LedNameType

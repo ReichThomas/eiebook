@@ -116,10 +116,11 @@ void LedOn(LedNameType eLED_)
   }
   
   /* Turn on the LED */
-  *pu32OnAddress = G_asBspConfigurations[(u8)eLED_].u32BitPosition;
+  *pu32OnAddress = G_asBspLedConfigurations[(u8)eLED_].u32BitPosition;
   
   /* Always set the LED back to LED_NORMAL_MODE */
-  LED_asControl[(u8)eLED_].eMode = LED_NORMAL_MODE;
+  Led_asControl[(u8)eLED_].eMode = LED_NORMAL_MODE;
+} /* end LedOn() */
   
 
 /*--------------------------------------------------------------------------------------------------------------------*/
