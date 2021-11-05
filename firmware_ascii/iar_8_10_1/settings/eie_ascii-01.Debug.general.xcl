@@ -6,8 +6,6 @@
 
 --plugin="D:\EWARM_8_40\arm\bin\armbat.dll" 
 
---rtc_enable 
-
 --device_macro="D:\EWARM_8_40\arm\config\debugger\Microchip\SAM3U.dmac" 
 
 --flash_loader="D:\EWARM_8_40\arm\config\flashloader\Microchip\sam3u2\sam3u2-flash.board" 
