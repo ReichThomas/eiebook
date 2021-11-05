@@ -49,6 +49,9 @@ Variable names shall start with "Led_<type>" and be declared as static.
 static fnCode_type Led_StateMachine;                   /*!< @brief The state machine function pointer */
 //static u32 Led_u32Timeout;                           /*!< @brief Timeout counter used across states */
 
+static LedControlType Led_asControl[U8_TOTAL_LEDS];
+/*!< @brief Holds individual control parameters for LEDs */
+
  
 
 /**********************************************************************************************************************
