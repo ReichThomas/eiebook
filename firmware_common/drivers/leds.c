@@ -102,7 +102,7 @@ void LedOn(LedNameType eLED_)
   u32 *pu32OnAddress;
   
   /* Configure set and clear addresses */
-  if(G_asBspLedConfigurations[(u8)eLED_].eActiveState == ACTIVE_HIGH)
+  if(G_asBspLedConfigurations[(u8)eLED_].eActiveState == LED_ACTIVE_HIGH)
   {
     /* Active high LEDs use SODR to turn on */
     pu32OnAddress = (u32*)(&(AT91C_BASE_PIOA->PIO_SODR) +
