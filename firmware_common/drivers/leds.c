@@ -15,11 +15,27 @@ CONSTANTS
 - NONE
 
 TYPES
-- 
+- LedNameType
+
+(from eief1-pcb-01):
+ {WHITE, PURPLE, BLUE, CYAN, 
+  GREEN, YELLOW, ORANGE, RED, 
+  LCD_RED, LCD_GREEN, LCD_BLUE}
+
+
+- LedRateType:
+  {LED_0HZ = 0, LED_0_5HZ = 1000, LED_1HZ = 500, LED_2HZ = 250, 
+   LED_4HZ = 125, LED_8HZ = 63, LED_PWM_100 = 20}
 
 PUBLIC FUNCTIONS
+- void LedOn(LedNameType eLED_)
+- void LedOff(LedNameType eLED_)
+- void LedToggle(LedNameType eLED_)
+- void LedBlink(LedNameType eLED_, LedRateType eBlinkRate_)
 
 PROTECTED FUNCTIONS
+- void LedInitialize(void)
+- void LedRunActiveState(void)
 
 ***********************************************************************************************************************/
 
@@ -62,6 +78,49 @@ Function Definitions
 /*! @publicsection */                                                                                            
 /*--------------------------------------------------------------------------------------------------------------------*/
 
+/*!-------------------------------------------------------------------------------------------------------------------
+@fn void LedOn(LedNameType eLED_)
+
+@brief Turns the specified LED on.
+
+This function automatically takes care of the active low vs. active high LEDs. The
+function works immediately (it does not require the main application loop to be
+running).
+
+Requires:
+- Definitions in G_asBspLedConfigurations[eLED_] and Led_asControl[eLED_] are correct
+
+@param eLED_ is a valid LED index
+
+Promises:
+- eLED_ is turned on
+- eLED_ is set to LED_NORMAL_MODE mode
+
+*/
+void LedOn(LedNameType eLED_)
+{
+  u32 *pu32OnAddress;
+  
+  /* Configure set and clear addresses */
+  if(G_asBspLedConfigurations[(u8)eLED_].eActiveState == ACTIVE_HIGH)
+  {
+    /* Active high LEDs use SODR to turn on */
+    pu32OnAddress = (u32*)(&(AT91C_BASE_PIOA->PIO_SODR) +
+                           G_asBspLedConfigurations[(u8)eLED_].ePort);
+  }
+  else
+  {
+    /* Active low LEDs use CODR tu turn on */
+    pu32OnAddress = (u32*)(&(AT91C_BASE_PIOA->PIO_CODR) +
+                           G_asBspLedConfigurations[(u8)eLED_].ePort);
+  }
+  
+  /* Turn on the LED */
+  *pu32OnAddress = G_asBspConfigurations[(u8)eLED_].u32BitPosition;
+  
+  /* Always set the LED back to LED_NORMAL_MODE */
+  LED_asControl[(u8)eLED_].eMode = LED_NORMAL_MODE;
+  
 
 /*--------------------------------------------------------------------------------------------------------------------*/
 /*! @protectedsection */                                                                                            
@@ -82,6 +141,15 @@ Promises:
 */
 void LedInitialize(void)
 {
+  /* Initialize the LED control array */
+  for(u8 i = 0; i < U8_TOTAL_LEDS; i++)
+  {
+    Led_asControl[i].eMode = LED_NORMAL_MODE;
+    Led_asControl[i].eRate = LED_0HZ;
+    
+    Led_asControl[i].u16Count = 0;
+  }
+  
   /* If good initialization, set state to Idle */
   if( 1 )
   {

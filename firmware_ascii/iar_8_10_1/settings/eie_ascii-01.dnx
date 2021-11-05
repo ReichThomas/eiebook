@@ -12,7 +12,7 @@
         <ByteLimit>50</ByteLimit>
     </Stack>
     <DebugChecksum>
-        <Checksum>3106744742</Checksum>
+        <Checksum>512695139</Checksum>
     </DebugChecksum>
     <CodeCoverage>
         <Enabled>0</Enabled>
