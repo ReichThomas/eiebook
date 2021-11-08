@@ -271,6 +271,22 @@ void LedInitialize(void)
     Led_asControl[i].u16Count = 0;
   }
   
+  /* init and testing sequence */
+  for(u8 i = 0; i < U8_TOTAL_LEDS; i++)
+  {
+    LedOn( (LedNameType)i );
+    for(u32 j = 0; j < 300000; j++);
+  }
+  
+  LedOff(WHITE);
+  LedOff(PURPLE);
+  LedOff(BLUE);
+  LedOff(CYAN);
+  LedToggle(GREEN);
+  LedToggle(YELLOW);
+  LedToggle(ORANGE);
+  LedToggle(RED);
+  
   /* If good initialization, set state to Idle */
   if( 1 )
   {
